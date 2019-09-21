@@ -30,10 +30,21 @@ class ViewController: UIViewController {
         isScattered.toggle()
         
         if isScattered == true {
-            scatterAnimation()
+            scatterAnimation(label: letterEl)
+            scatterAnimation(label: letterA)
+            scatterAnimation(label: letterM)
+            scatterAnimation(label: letterB)
+            scatterAnimation(label: letterD)
+            scatterAnimation(label: letterLastA)
             logoFadeOut()
         } else {
             logoFadeInt()
+            gatherAnimation(label: letterEl)
+            gatherAnimation(label: letterA)
+            gatherAnimation(label: letterM)
+            gatherAnimation(label: letterB)
+            gatherAnimation(label: letterD)
+            gatherAnimation(label: letterLastA)
         }
         
     }
@@ -93,6 +104,8 @@ class ViewController: UIViewController {
         
     }
     
+    // MARK: Animations
+    
     func logoFadeOut() {
         UIImageView.animate(withDuration: 3.0) {
             self.lambdaLogo.alpha = 0
@@ -105,8 +118,17 @@ class ViewController: UIViewController {
         }
     }
     
-    func scatterAnimation() {
-        letterEl.transform = CGAffineTransform(rotationAngle: CGFloat.random(in: 1...100))
+    func scatterAnimation(label: UILabel) {
+        UILabel.animate(withDuration: 3.0) {
+            label.transform = CGAffineTransform(rotationAngle: CGFloat.random(in: 1...100))
+            label.transform = CGAffineTransform(translationX: CGFloat.random(in: 1...700), y: CGFloat.random(in: 1...700))
+        }
+    }
+    
+    func gatherAnimation(label: UILabel) {
+        UILabel.animate(withDuration: 3.0) {
+            label.transform = .identity
+        }
         
     }
    
