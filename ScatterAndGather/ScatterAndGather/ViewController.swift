@@ -118,12 +118,24 @@ class ViewController: UIViewController {
     func logoFadeOut() {
         UIImageView.animate(withDuration: 3.0) {
             self.lambdaLogo.alpha = 0
+            self.letterEl.alpha = 0.5
+            self.letterA.alpha = 0.5
+            self.letterM.alpha = 0.5
+            self.letterB.alpha = 0.5
+            self.letterD.alpha = 0.5
+            self.letterLastA.alpha = 0.5
         }
     }
     
     func logoFadeInt() {
         UIImageView.animate(withDuration: 3.0) {
             self.lambdaLogo.alpha = 100
+            self.letterEl.alpha = 100
+            self.letterA.alpha = 100
+            self.letterM.alpha = 100
+            self.letterB.alpha = 100
+            self.letterD.alpha = 100
+            self.letterLastA.alpha = 100
         }
     }
     
@@ -131,6 +143,7 @@ class ViewController: UIViewController {
         UILabel.animate(withDuration: 3.0) {
             label.transform = CGAffineTransform(rotationAngle: CGFloat.random(in: 1...100))
             label.transform = CGAffineTransform(translationX: CGFloat.random(in: 1...700), y: CGFloat.random(in: 1...700))
+            
             label.backgroundColor = self.setRandomColor()
             label.textColor = self.setRandomColor()
         }
