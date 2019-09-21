@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var isScattered: Bool?
+    var isScattered: Bool = false
     let lambdaLogo = UIImageView()
     
     let letterEl = UILabel()
@@ -27,6 +27,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func toggleButtonPressed(_ sender: UIBarButtonItem) {
+        isScattered.toggle()
+        
+        if isScattered == true {
+            scatterAnimation()
+            logoFadeOut()
+        } else {
+            logoFadeInt()
+        }
         
     }
     
@@ -59,15 +67,12 @@ class ViewController: UIViewController {
             label.text = "D"
         case letterLastA:
             label.frame = CGRect(x: 320, y: 100, width: 80, height: 80)
-            
             label.text = "A"
-        
         default:
             print("Error")
         }
     
         view.addSubview(label)
-
         label.translatesAutoresizingMaskIntoConstraints = false
         label.layer.shadowColor = UIColor.gray.cgColor
         label.layer.shadowOffset = CGSize(width: 1, height: 3.0)
@@ -86,12 +91,22 @@ class ViewController: UIViewController {
         lambdaLogo.frame = CGRect(x: 0, y: 250, width: 350, height: 100)
         lambdaLogo.center = view.center
         
-//        UIImageView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 4) {
-//            lambdaLogo.transform = CG
-//        }
+    }
+    
+    func logoFadeOut() {
+        UIImageView.animate(withDuration: 3.0) {
+            self.lambdaLogo.alpha = 0
+        }
+    }
+    
+    func logoFadeInt() {
+        UIImageView.animate(withDuration: 3.0) {
+            self.lambdaLogo.alpha = 100
+        }
     }
     
     func scatterAnimation() {
+        letterEl.transform = CGAffineTransform(rotationAngle: CGFloat.random(in: 1...100))
         
     }
    
