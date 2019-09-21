@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var isScattered: Bool?
+    let lambdaLogo = UIImageView()
     
     let letterEl = UILabel()
     let letterA = UILabel()
@@ -22,6 +23,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLabels()
+        configureImageView()
     }
 
     @IBAction func toggleButtonPressed(_ sender: UIBarButtonItem) {
@@ -57,13 +59,15 @@ class ViewController: UIViewController {
             label.text = "D"
         case letterLastA:
             label.frame = CGRect(x: 320, y: 100, width: 80, height: 80)
+            
             label.text = "A"
         
         default:
             print("Error")
         }
-        
+    
         view.addSubview(label)
+
         label.translatesAutoresizingMaskIntoConstraints = false
         label.layer.shadowColor = UIColor.gray.cgColor
         label.layer.shadowOffset = CGSize(width: 1, height: 3.0)
@@ -73,6 +77,22 @@ class ViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 80)
         label.textColor = .black
         label.textAlignment = .center
+    }
+    
+    func configureImageView() {
+        view.addSubview(lambdaLogo)
+        let logoImage = UIImage(named: "lambda_logo")
+        lambdaLogo.image = logoImage
+        lambdaLogo.frame = CGRect(x: 0, y: 250, width: 350, height: 100)
+        lambdaLogo.center = view.center
+        
+//        UIImageView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 4) {
+//            lambdaLogo.transform = CG
+//        }
+    }
+    
+    func scatterAnimation() {
+        
     }
    
     
